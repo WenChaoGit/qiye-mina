@@ -4,8 +4,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/book/book",
-    "pages/my/my",
-    "components/movie/index"
+    "pages/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
