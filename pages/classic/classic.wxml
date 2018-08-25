@@ -1,4 +1,4 @@
 <!--pages/classic/classis.wxml-->
 <!-- <text>pages/classic/classis.wxml</text> -->
-<v-like count="{{classic.fav_nums}}" />
+<v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}" bindlike="onLike" />
 <v-movie img="{{classic.image}}" content="{{classic.content}}"></v-movie>

@@ -1,4 +1,4 @@
-// components/gender/index.js
+// components/epsoide/index.js
 Component({
   /**
    * 组件的属性列表

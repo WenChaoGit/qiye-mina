@@ -32,6 +32,8 @@ Component({
       let count = this.properties.count;
       like?count+=1:count-=1;
       this.setData({like,count})
+      let behavior = this.properties.like?'like':'cancel'
+      this.triggerEvent('like',{behavior},{})
     },
   }
 })
