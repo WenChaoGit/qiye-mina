@@ -1,3 +1,6 @@
+import regeneratorRuntime from '../../utils/runtime'
+import {fly} from '../../utils/http'
+
 // pages/classic/classis.js
 Page({
 
@@ -8,11 +11,15 @@ Page({
 
   },
 
+  async _getBookList(){
+    let data = await fly.get('classic/latest');
+    console.log(data)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getBookList();
   },
 
   /**

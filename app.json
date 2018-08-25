@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/book/book",
-    "pages/my/my"
+    "pages/my/my",
+    "components/movie/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,8 +14,8 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor":"#000000",
-    "color":"#c7c7c7",
+    "selectedColor": "#000000",
+    "color": "#c7c7c7",
     "list": [
       {
         "pagePath": "pages/classic/classic",
