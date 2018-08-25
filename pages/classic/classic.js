@@ -1,6 +1,8 @@
 import regeneratorRuntime from '../../utils/runtime'
-import {fly} from '../../utils/http'
-
+import { LikeModel } from '../../model/like';
+import { BookModel } from '../../model/book';
+const bookModel = new BookModel();
+const likeModel = new LikeModel();
 // pages/classic/classis.js
 Page({
 
@@ -12,8 +14,17 @@ Page({
   },
 
   async _getBookList(){
-    let {data:classic} = await fly.get('classic/latest');
+    let {data:classic} = await bookModel.getBookList();
     this.setData({classic})
+  },
+
+  async onLike({detail}){
+    let { behavior } = detail;
+    let {id:artID,type:category} = this.data.classic
+    let {data,status} = await likeModel.like({behavior,artID,category})
+    if( String(status).startsWith('2')){
+      wx.showToast({title:data.msg});return;
+    }
   },
   /**
    * 生命周期函数--监听页面加载
