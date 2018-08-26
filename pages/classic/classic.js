@@ -10,7 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic:{}
+    classic:{},
+    latest:true
   },
 
   async _getBookList(){
@@ -25,6 +26,12 @@ Page({
     if( String(status).startsWith('2')){
       wx.showToast({title:data.msg});return;
     }
+  },
+  async next(){
+    
+  },
+  async prev(){
+
   },
   /**
    * 生命周期函数--监听页面加载
