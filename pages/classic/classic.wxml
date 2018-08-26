@@ -1,4 +1,6 @@
-<!--pages/classic/classis.wxml-->
-<!-- <text>pages/classic/classis.wxml</text> -->
-<v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}" bindlike="onLike" />
+<view class="header">
+  <v-epsoide index="{{classic.index}}"></v-epsoide>
+  <v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}" bindlike="onLike" />
+</view>
 <v-movie img="{{classic.image}}" content="{{classic.content}}"></v-movie>
+<v-navi title="{{classic.title}}"></v-navi>

@@ -1,0 +1,6 @@
+<!--components/navi/index.wxml-->
+<view class="container">
+  <image class="icon" src="prev.png"></image>
+  <text class="title">{{title}}</text>
+  <image class="icon" src="next.png"></image>
+</view>
