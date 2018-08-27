@@ -31,7 +31,9 @@ Page({
     
   },
   async prev(){
-
+    let {index} = this.data.classic
+    let data = await bookModel.getPrevious(index)
+    console.log(data);
   },
   /**
    * 生命周期函数--监听页面加载

@@ -7,4 +7,8 @@ export class BookModel{
     getBookList(){
         return fly.get('classic/latest')
     }
+
+    getPrevious(index){
+        return fly.get(`classic/${index}/previous`)
+    }
 }
