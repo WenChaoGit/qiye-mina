@@ -27,13 +27,13 @@ Page({
       wx.showToast({title:data.msg});return;
     }
   },
-  async next(){
-    
+  async onNext(){
+    console.log(1)
   },
-  async prev(){
+  async onPrev(){
     let {index} = this.data.classic
-    let data = await bookModel.getPrevious(index)
-    console.log(data);
+    let {data:classic} = await bookModel.getPrevious(index)
+    this.setData({classic})
   },
   /**
    * 生命周期函数--监听页面加载
