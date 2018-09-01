@@ -13,7 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    playImgSrc:'play.png'
+    playImgSrc:'playing.png'
   },
 
   /**

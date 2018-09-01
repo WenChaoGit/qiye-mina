@@ -4,6 +4,7 @@ import { BookModel } from '../../model/book';
 const bookModel = new BookModel();
 const likeModel = new LikeModel();
 const app = getApp();
+
 // pages/classic/classis.js
 Page({
 
