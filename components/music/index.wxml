@@ -1,6 +1,6 @@
 <view class="music-container">
-  <image src="img" />
-  <image src="playImgSrc"/>
-  <image  src="music@tag.png"/>
+  <image class="classic-img" src="{{img}}" />
+  <image class="player-img" src="{{playImgSrc}}" />
+  <image class="tag" src="music@tag.png" />
   <text class="content">{{content}}</text>
 </view>

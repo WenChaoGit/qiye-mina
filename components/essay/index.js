@@ -5,14 +5,15 @@ Component({
    */
   properties: {
     img:String,
-    content:String
+    content:String,
+    src:String
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    playImgSrc:'play.png'
   },
 
   /**

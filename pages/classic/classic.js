@@ -12,8 +12,8 @@ Page({
    */
   data: {
     classic:{},
-    latest:false,
-    first:true,
+    latest:true,
+    first:false,
   },
 
   async _getLatest(){
@@ -32,26 +32,48 @@ Page({
   },
   async onNext(){
       let {index} = this.data.classic;
-      let data = await bookModel.getNext(index);
-      console.log(data)
+      let cacheKey = this._getClassicCacheKey(index+1);
+      let cacheClassic = wx.getStorageSync(cacheKey);
+      if(!cacheClassic){
+        let {data:classic} = await bookModel.getNext(index);
+        wx.setStorageSync(cacheKey,classic);
+        this._setClassicData(classic);return;
+      }
+      this._setClassicData(cacheClassic)
+      
   },
   async onPrev(){
     let {index} = this.data.classic
-    let {data:classic} = await bookModel.getPrevious(index)
-    console.log(classic)
+    let cacheKey = this._getClassicCacheKey(index-1);
+    let cacheClassic = wx.getStorageSync(cacheKey);
+    if(!cacheClassic){
+      let {data:classic} = await bookModel.getPrevious(index)
+      wx.setStorageSync(cacheKey,classic);
+      this._setClassicData(classic);return;
+    }
+    this._setClassicData(cacheClassic)
+  },
+  _isFirst(index){
+    return index == 1?true:false;
+  },
+  _isLatest(index){
+    let {latestIndex} = app.globalData;
+    return latestIndex == index?true:false;
+  },
+  _getClassicCacheKey(index){
+    return  `classic-${index}`;
+  },
+  _setClassicData(classic){
     this.setData({
       classic,
       first:this._isFirst(classic.index),
       latest:this._isLatest(classic.index)
     })
   },
-  _isFirst(index){
-    console.log(index)
-    return index == 1?true:false;
-  },
-  _isLatest(index){
-    let {latestIndex} = app.globalData;
-    return latestIndex == index?true:false;
+
+  async _getLikeStatus(id,category){
+    let {data} = await likeModel.getClassicLikeStatus(id,category);
+    console.log(data)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -59,53 +81,4 @@ Page({
   onLoad: function (options) {
     this._getLatest();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -3,6 +3,8 @@
     <v-epsoide index="{{classic.index}}"></v-epsoide>
     <v-like like="{{classic.like_status}}" count="{{classic.fav_nums}}" bindlike="onLike" />
   </view>
-  <v-movie img="{{classic.image}}" content="{{classic.content}}"></v-movie>
+  <v-movie wx:if="{{classic.type==100}}" img="{{classic.image}}" content="{{classic.content}}"></v-movie>
+  <v-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}"></v-music>
+  <v-essay wx:if="{{classic.type==300}}" img="{{classic.image}}" content="{{classic.content}}"></v-essay>
   <v-navi bind:left="onNext" bind:right="onPrev" first="{{first}}" latest="{{latest}}"  class="navi" title="{{classic.title}}"></v-navi>
 </view>

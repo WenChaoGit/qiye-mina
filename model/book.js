@@ -6,7 +6,7 @@ import {
 export class BookModel{
     getBookList(){
         return fly.get('classic/latest')
-    }
+    } 
 
     getPrevious(index){
         return fly.get(`classic/${index}/previous`)
@@ -15,4 +15,6 @@ export class BookModel{
     getNext(index){
         return fly.get(`classic/${index}/next`);
     }
+
+    
 }

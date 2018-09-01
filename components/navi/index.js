@@ -5,8 +5,14 @@ Component({
    */
   properties: {
     title:String,
-    first:Boolean,
-    latest:Boolean
+    first:{
+      type:Boolean,
+      value:false
+    },
+    latest:{
+      type:Boolean,
+      value:false,
+    }
   },
 
   /**
@@ -32,7 +38,7 @@ Component({
       if(!this.properties.first){
         this.triggerEvent('right')
       }
-      console.log('right')
+
     }
   }
 })
