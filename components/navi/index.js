@@ -13,7 +13,10 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    disLeftSrc:'triangle.dis@left.png',
+    leftSrc:'triangle@left.png',
+    disRightSrc:'triangle.dis@right.png',
+    rightSrc:'triangle@right.png'
   },
 
   /**
@@ -22,13 +25,14 @@ Component({
   methods: {
     onLeft(){
       if(!this.properties.latest){
-        this.triggerEvent('left',{})
+        this.triggerEvent('left')
       }
     },
     onRight(){
       if(!this.properties.first){
-        this.triggerEvent('right',{})
+        this.triggerEvent('right')
       }
+      console.log('right')
     }
   }
 })

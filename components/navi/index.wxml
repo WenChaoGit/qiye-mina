@@ -1,6 +1,6 @@
 <!--components/navi/index.wxml-->
 <view class="container">
-  <image bindtap="onLeft" class="icon" src="prev.png"></image>
+  <image bindtap="onLeft" class="icon" src="{{first?disLeftSrc:leftSrc}}"></image>
   <text class="title">{{title}}</text>
-  <image bindtap="onRight" class="icon" src="next.png"></image>
+  <image bindtap="onRight" class="icon" src="{{latest?disRightSrc:rightSrc}}"></image>
 </view>

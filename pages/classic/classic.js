@@ -3,6 +3,7 @@ import { LikeModel } from '../../model/like';
 import { BookModel } from '../../model/book';
 const bookModel = new BookModel();
 const likeModel = new LikeModel();
+const app = getApp();
 // pages/classic/classis.js
 Page({
 
@@ -11,11 +12,13 @@ Page({
    */
   data: {
     classic:{},
-    latest:true
+    latest:false,
+    first:true,
   },
 
-  async _getBookList(){
+  async _getLatest(){
     let {data:classic} = await bookModel.getBookList();
+    app.globalData.latestIndex = classic.index;
     this.setData({classic})
   },
 
@@ -28,18 +31,33 @@ Page({
     }
   },
   async onNext(){
-    console.log(1)
+      let {index} = this.data.classic;
+      let data = await bookModel.getNext(index);
+      console.log(data)
   },
   async onPrev(){
     let {index} = this.data.classic
     let {data:classic} = await bookModel.getPrevious(index)
-    this.setData({classic})
+    console.log(classic)
+    this.setData({
+      classic,
+      first:this._isFirst(classic.index),
+      latest:this._isLatest(classic.index)
+    })
+  },
+  _isFirst(index){
+    console.log(index)
+    return index == 1?true:false;
+  },
+  _isLatest(index){
+    let {latestIndex} = app.globalData;
+    return latestIndex == index?true:false;
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._getBookList();
+    this._getLatest();
   },
 
   /**

@@ -11,4 +11,8 @@ export class BookModel{
     getPrevious(index){
         return fly.get(`classic/${index}/previous`)
     }
+
+    getNext(index){
+        return fly.get(`classic/${index}/next`);
+    }
 }

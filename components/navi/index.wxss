@@ -11,8 +11,8 @@
 }
 
 .icon {
-  height: 34rpx;
-  width: 23rpx;
+  height: 80rpx;
+  width: 80rpx;
   padding:20rpx 30rpx;
 }
 
