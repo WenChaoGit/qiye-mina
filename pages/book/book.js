@@ -1,4 +1,7 @@
 import regeneratorRuntime from '../../utils/runtime'
+import { BookModel } from "../../model/book";
+import {random} from "../../utils/util"
+const bookModel = new BookModel();
 // pages/book/book.js
 Page({
 
@@ -6,62 +9,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bookList:[],
+    searchPanel:false,
+    more:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getHotList()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  async getHotList(){
+    let {data} = await bookModel.getHotList()
+    this.setData({bookList:data})
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onReachBottom(){
+    this.setData({
+      more:random(10) 
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onActivateSearch(){
+    this.setData({
+      searchPanel:true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onCancel(){
+    this.setData({
+      searchPanel:false
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

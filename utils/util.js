@@ -9,11 +9,24 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+
+const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+const random = function generateMixed(n) {
+  var res = "";
+  for (var i = 0; i < n; i++) {
+    var id = Math.ceil(Math.random() * 35);
+    res += chars[id];
+  }
+  return res;
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  random: random,
 }

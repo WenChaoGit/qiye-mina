@@ -16,5 +16,9 @@ export class BookModel{
         return fly.get(`classic/${index}/next`);
     }
 
+    getHotList(){
+        return fly.get('book/hot_list')
+    }
+
     
 }
